@@ -11,7 +11,7 @@ Also text rendering, but it's more of a framework thing so it's not really tied 
 
 # Things that work
 
-Gameplay (No scorse or lose condition I KNOW)
+Gameplay (No score or lose condition I KNOW)
 
 Collisions (Really rudimentary collision system, it's not really efficent but at least it works)
 
