@@ -38,3 +38,10 @@ Texture::Texture(std::string path) {
 	}
 
 }
+
+void Texture::bind(unsigned int unit) {
+	
+	glBindTextureUnit(unit,this->ID);	
+
+
+}

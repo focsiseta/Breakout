@@ -33,8 +33,13 @@ public:
 	// returns the ID of the shader
 	static GLuint compile(const char *shaderPath,GLenum shaderType);
 	Shader(const char * vertexShaderPath,const char * fragmentShaderPath,const char * geometryShaderPath = nullptr);
+	
+	//Needed because of try-catch in main
 	Shader();
-	void mat4(glm::mat4& matrix, std::string uniformName, bool transpose);
+
+	void u_mat4(glm::mat4& matrix, std::string uniformName, bool transpose);
+	void u_int(int value, std::string uniformName);
+	void u_vec3(glm::vec3&, std::string uniformName);
 	void use();
 	static void printLog(std::vector<GLchar> log,GLenum type);
 };

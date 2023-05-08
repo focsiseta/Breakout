@@ -15,6 +15,7 @@ std::string readFromFile(const char* path) {
 		std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ: " << e.what() << std::endl;
 	}
 	shader.close();
+	sStream.clear();
 
 	//std::cout << code;
 	return code;
@@ -61,7 +62,6 @@ void Shader::printLog(std::vector<GLchar> log,GLenum type) {
 	std::cout << std::endl;
 
 }
-Shader::Shader() {}
 //There is no support for geometry shaders (For now)
 Shader::Shader(const char* vertexShaderPath, const char* fragmentShaderPath, const char* geometryShaderPath) {
 	GLuint vertex, fragment, geometry;
@@ -88,6 +88,8 @@ Shader::Shader(const char* vertexShaderPath, const char* fragmentShaderPath, con
 	glDeleteShader(fragment);
 	this->uniforms = retriveUniforms(this->ID);
 }
+
+Shader::Shader() {};
 
 std::unordered_map<std::string, UniformInfo> retriveUniforms(GLint programID) {
 
@@ -124,10 +126,20 @@ std::unordered_map<std::string, UniformInfo> retriveUniforms(GLint programID) {
 
 }
 
-void Shader::mat4(glm::mat4& matrix,std::string uniformName,bool transpose) {
+void Shader::u_mat4(glm::mat4& matrix,std::string uniformName,bool transpose) {
 
 	glUniformMatrix4fv(this->uniforms[uniformName].location,1,transpose ? GL_TRUE : GL_FALSE,glm::value_ptr(matrix));
 
+}
+void Shader::u_int(int value, std::string uniformName) {
+	
+	glUniform1i(this->uniforms[uniformName].location, value);
+
+}
+
+void Shader::u_vec3(glm::vec3& value, std::string uniformName) {
+
+	glUniform3fv(this->uniforms[uniformName].location,1,glm::value_ptr(value));
 }
 
 void Shader::use() {

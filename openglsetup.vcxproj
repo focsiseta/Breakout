@@ -135,9 +135,11 @@
     <ClCompile Include="breakout\game\game.cpp" />
     <ClCompile Include="breakout\math\math.cpp" />
     <ClCompile Include="breakout\rendering\rendering.cpp" />
+    <ClCompile Include="components\input\input.cpp" />
+    <ClCompile Include="components\manager\manager.cpp" />
     <ClCompile Include="components\shader\shader.cpp" />
     <ClCompile Include="components\texture\texture.cpp" />
-    <ClCompile Include="libraries\glad\include\glad.c" />
+    <ClCompile Include="libraries\glad\src\glad.c" />
     <ClCompile Include="libraries\glm\detail\glm.cpp" />
     <ClCompile Include="libraries\stb_image\stbi.cpp" />
     <ClCompile Include="openglsetup.cpp" />
@@ -147,9 +149,13 @@
     <ClInclude Include="breakout\game\game.h" />
     <ClInclude Include="breakout\math\math.h" />
     <ClInclude Include="breakout\rendering\rendering.h" />
+    <ClInclude Include="components\input\input.h" />
+    <ClInclude Include="components\manager\manager.h" />
     <ClInclude Include="components\shader\shader.h" />
     <ClInclude Include="components\texture\texture.h" />
     <ClInclude Include="components\utils.h" />
+    <ClInclude Include="libraries\glad\include\glad\glad.h" />
+    <ClInclude Include="libraries\glad\include\KHR\khrplatform.h" />
     <ClInclude Include="libraries\glm\common.hpp" />
     <ClInclude Include="libraries\glm\detail\compute_common.hpp" />
     <ClInclude Include="libraries\glm\detail\compute_vector_relational.hpp" />

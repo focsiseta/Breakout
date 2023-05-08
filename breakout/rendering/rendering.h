@@ -9,21 +9,28 @@
 
 class Sprite {
 private:
-	glm::vec2 position;
 	float rotation;
-	float scaleFactor;
 	glm::mat4 model;
 	Texture texture;
-	Shader shader;
 	static float vertices[12];
 
 public:
 	Sprite();
+	Sprite(std::string);
+	Sprite(std::string,glm::vec3 color);
 	void traslate(glm::vec2);
 	void rotate(float degree);
-	void scale(float size);
+	void scale(glm::vec2 size);
 	void draw(Shader& sh);
+	void bindTexture();
+	void bindTexture(int);
 	static GLuint ID; //VAO obj
+	bool hasTexture = false;
+	bool isAlive = true;
+	glm::vec2 scaleFactor;
+	glm::vec3 color;
+	glm::vec2 position;
+	//Load data in gpu
 	static void initSprites();
 
 

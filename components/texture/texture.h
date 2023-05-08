@@ -10,5 +10,6 @@ private:
 public:
 	Texture(std::string path);
 	Texture();
+	void bind(unsigned int);
 };
 #endif
