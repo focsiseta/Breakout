@@ -15,6 +15,8 @@ Gameplay (No score or lose condition I KNOW)
 
 Collisions (Really rudimentary collision system, it's not really efficent but at least it works)
 
+Here is a preview of what it looks like now : https://www.youtube.com/watch?v=6nqCAnHcoEI
+
 # Inspiration
 Most of the game is inspired by learnopengl.com, but I don't really like copy and pasting, so most of the code you will read it's written from scratch with the 
 same concepts in mind.
