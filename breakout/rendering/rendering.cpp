@@ -69,6 +69,7 @@ void  Sprite::initSprites() {
 }
 
 void Sprite::draw(Shader& sh) {
+	sh.use();
 	glm::mat4 model = glm::mat4(1);
 	model = glm::translate(model,glm::vec3(this->position,0));
 
@@ -86,7 +87,8 @@ void Sprite::draw(Shader& sh) {
 	sh.u_mat4(this->model, "model", false);
 	glBindVertexArray(Sprite::ID);
 	glDrawArrays(GL_TRIANGLES,0,6);
-	if (glGetError() != GL_NO_ERROR) std::cout << "error" << std::endl;
+	auto errorCode = glGetError();
+	if ( errorCode != GL_NO_ERROR) std::cout << "error in sprite draw " << errorCode << std::endl;
 
 }
 

@@ -4,6 +4,7 @@
 #include "breakout/rendering/rendering.h"
 #include "components/input/input.h"
 #include "breakout/game/game.h"
+#include "components/particles/particles.h"
 
 
 #define vec2(a,b) glm::vec2(a,b)
@@ -17,6 +18,7 @@ int main()
 
     Sprite::initSprites();
     Shader shader2D;
+    Shader particles;
     glm::mat4 projection = glm::ortho(0.f, float(WIN_WIDTH),float(WIN_HEIGHT), 0.f, 0.f, 1.f);
     glm::mat4 model = glm::mat4(1.);
 
@@ -27,6 +29,13 @@ int main()
         shader2D.u_mat4(projection, "projection", false);
         shader2D.u_mat4(model, "model", false);
         shader2D.u_int(0, "tex");
+
+        particles = Shader("./components/shader/sources/particleVS.glsl", "./components/shader/sources/particleFS.glsl");
+        particles.use();
+        particles.u_mat4(projection, "projection", false);
+        particles.u_int(0, "particle");
+        
+
     }
     catch (std::string err)
     {
@@ -42,19 +51,31 @@ int main()
     background.scale(vec2(WIN_WIDTH ,WIN_HEIGHT));
     
 
+    //Initializing ParticlesGenerator class
+    Particle p = Particle(tmp.ball.position,tmp.ball.direction,glm::vec4(1),Texture("./breakout/assets/cursor.png"),1.0f);
+    ParticleGenerator::init();
+    
+    ParticleGenerator gen = ParticleGenerator(p,tmp.ball,5000,1);
+
     while (!glfwWindowShouldClose(window))
     {
+        
         Input::readInput(window);
+        gen.update();
         tmp.doCollisions();
         glClear(GL_COLOR_BUFFER_BIT);
+        
+        shader2D.use();
         background.bindTexture();
         shader2D.u_vec3(background.color, "blockColor");
         background.draw(shader2D);
         tmp.drawLevel(shader2D,0);
         tmp.drawPaddleAndBall(shader2D);
+        gen.render(particles);
         tmp.movement();
         glfwSwapBuffers(window);
         glfwPollEvents();
+        std::cout << glGetError() << "\n";
 
     }
     glfwTerminate();

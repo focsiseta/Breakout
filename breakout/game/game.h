@@ -37,6 +37,7 @@ private:
 	static std::pair<float,float> sizeCalc(int,int);
 };
 
+
 class Ball : public Sprite{
 
 public:

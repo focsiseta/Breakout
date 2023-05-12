@@ -23,6 +23,7 @@ GLFWwindow* createWindow(const char* windowName, int height,int width) {
         glfwTerminate();
         return nullptr;
     }
+    glEnable(GL_BLEND);
 	return window;
 
 }

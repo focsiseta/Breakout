@@ -39,7 +39,10 @@ public:
 
 	void u_mat4(glm::mat4& matrix, std::string uniformName, bool transpose);
 	void u_int(int value, std::string uniformName);
+	void u_vec4(glm::vec4&, std::string uniformName);
 	void u_vec3(glm::vec3&, std::string uniformName);
+	void u_vec2(glm::vec2&, std::string uniformName);
+	void u_float(float value, std::string uniformName);
 	void use();
 	static void printLog(std::vector<GLchar> log,GLenum type);
 };

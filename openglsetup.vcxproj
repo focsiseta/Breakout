@@ -137,6 +137,7 @@
     <ClCompile Include="breakout\rendering\rendering.cpp" />
     <ClCompile Include="components\input\input.cpp" />
     <ClCompile Include="components\manager\manager.cpp" />
+    <ClCompile Include="components\particles\particles.cpp" />
     <ClCompile Include="components\shader\shader.cpp" />
     <ClCompile Include="components\texture\texture.cpp" />
     <ClCompile Include="libraries\glad\src\glad.c" />
@@ -151,6 +152,7 @@
     <ClInclude Include="breakout\rendering\rendering.h" />
     <ClInclude Include="components\input\input.h" />
     <ClInclude Include="components\manager\manager.h" />
+    <ClInclude Include="components\particles\particles.h" />
     <ClInclude Include="components\shader\shader.h" />
     <ClInclude Include="components\texture\texture.h" />
     <ClInclude Include="components\utils.h" />

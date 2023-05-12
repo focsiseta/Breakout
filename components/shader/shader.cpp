@@ -142,6 +142,21 @@ void Shader::u_vec3(glm::vec3& value, std::string uniformName) {
 	glUniform3fv(this->uniforms[uniformName].location,1,glm::value_ptr(value));
 }
 
+void Shader::u_float(float value, std::string uniformName) {
+
+	glUniform1fv(this->uniforms[uniformName].location, 1, &value);
+}
+
+void Shader::u_vec4(glm::vec4& value, std::string uniformName) {
+
+	glUniform4fv(this->uniforms[uniformName].location, 1, glm::value_ptr(value));
+}
+
+void Shader::u_vec2(glm::vec2& value, std::string uniformName) {
+
+	glUniform2fv(this->uniforms[uniformName].location, 1, glm::value_ptr(value));
+}
+
 void Shader::use() {
 	
 	glUseProgram(this->ID);

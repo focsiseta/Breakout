@@ -263,6 +263,7 @@ void Game::movement() {
 }
 
 void Game::drawPaddleAndBall(Shader& sh) {
+	sh.use();
 	this->ball.bindTexture();
 	sh.u_vec3(this->ball.color, "blockColor");
 	this->ball.draw(sh);
@@ -279,7 +280,7 @@ void Game::addLevel(std::string path) {
 }
 
 void Game::drawLevel(Shader& sh,int i) {
-
+	sh.use();
 	this->levels[i].drawLevel(sh);
 
 }
